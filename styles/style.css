@@ -1,10 +1,10 @@
 /* CSS HEX */
 :root {
-    --charcoal: #454851ff;
-    --asparagus: #73956fff;
-    --cambridge-blue: #7bae7fff;
-    --celadon: #95d7aeff;
-    --lavender-blush: #fceff9ff;
+    --vanilla: #d4e09bff;
+    --light-yellow: #f6f4d2ff;
+    --tea-green: #cbdfbdff;
+    --atomic-tangerine: #f19c79ff;
+    --chestnut: #a44a3fff;
 }
 
 body {
@@ -13,7 +13,7 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: var(--lavender-blush);
+    background-color: var(--tea-green);
     font-family: Arial, sans-serif;
 }
 
@@ -21,21 +21,21 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: var(--charcoal);
-    color: white;
+    background-color: var(--chestnut);
+    color: var(--light-yellow);
     padding: 10px;
 }
 
 .navigator button {
-    background-color: var(--asparagus);
-    color: white;
+    background-color: var(--vanilla);
+    color: var(--chestnut);
     border: none;
     padding: 10px 20px;
     cursor: pointer;
 }
 
 .navigator button:hover {
-    background-color: var(--cambridge-blue);
+    background-color: var(--atomic-tangerine);
 }
 
 .main-content {
@@ -43,42 +43,57 @@ body {
     flex: 1;
 }
 
-.elements, .information {
-    flex: 1;
+.elements {
+    display: flex;
+    flex: 0.5; /* Fill only half of the width */
     padding: 20px;
     box-sizing: border-box;
 }
 
-.elements {
-    background-color: var(--celadon);
+.column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.information {
-    background-color: var(--cambridge-blue);
+.circle {
+    background-color: var(--vanilla);
+    border-radius: 50%;
 }
 
-.log {
-    background-color: var(--charcoal);
-    color: white;
-    flex-basis: 35%;
-    text-align: left;
-    padding: 10px;
+.square {
+    background-color: var(--atomic-tangerine);
 }
 
 .draggable {
     width: 50px;
     height: 50px;
-    background-color: var(--asparagus);
-    color: white;
-    border-radius: 50%;
+    color: var(--chestnut); /* Update font color to match outline */
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 24px;
     margin: 10px;
     cursor: grab;
+    outline: 2px solid var(--chestnut); /* Add chestnut colored outline */
 }
 
 .draggable:active {
     cursor: grabbing;
+}
+
+.information {
+    background-color: var(--atomic-tangerine);
+    color: var(--chestnut); /* Update font color */
+    flex: 0.5; /* Fill the remaining half of the width */
+    padding: 20px;
+}
+
+.log {
+    background-color: var(--chestnut);
+    color: var(--light-yellow);
+    flex-basis: 35%;
+    text-align: left;
+    padding: 10px;
 }
