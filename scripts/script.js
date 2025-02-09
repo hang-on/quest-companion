@@ -19,6 +19,17 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const id = e.dataTransfer.getData('text');
         const draggable = document.getElementById(id);
-        elementsSection.appendChild(draggable);
+        const dropTarget = e.target;
+
+        if (dropTarget.classList.contains('draggable') && dropTarget.id !== draggable.id) {
+            handleElementDrop(draggable, dropTarget);
+        } else {
+            elementsSection.appendChild(draggable);
+        }
     });
+
+    function handleElementDrop(draggable, dropTarget) {
+        console.log(`Dropped ${draggable.id} onto ${dropTarget.id}`);
+        // Placeholder function to handle specific drop logic
+    }
 });
