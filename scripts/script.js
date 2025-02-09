@@ -4,10 +4,18 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('data/enemies.json')
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+            console.log('Enemies:', data);
             // You can now use the enemy data in your app
         })
         .catch(error => console.error('Error loading enemy data:', error));
+
+    fetch('data/heroes.json')
+        .then(response => response.json())
+        .then(data => {
+            console.log('Heroes:', data);
+            // You can now use the hero data in your app
+        })
+        .catch(error => console.error('Error loading hero data:', error));
 
     const draggables = document.querySelectorAll('.draggable');
 
