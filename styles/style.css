@@ -1,0 +1,66 @@
+/* CSS HEX */
+:root {
+    --charcoal: #454851ff;
+    --asparagus: #73956fff;
+    --cambridge-blue: #7bae7fff;
+    --celadon: #95d7aeff;
+    --lavender-blush: #fceff9ff;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--lavender-blush);
+    font-family: Arial, sans-serif;
+}
+
+.navigator {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--charcoal);
+    color: white;
+    padding: 10px;
+}
+
+.navigator button {
+    background-color: var(--asparagus);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.navigator button:hover {
+    background-color: var(--cambridge-blue);
+}
+
+.main-content {
+    display: flex;
+    flex: 1;
+}
+
+.elements, .information {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.elements {
+    background-color: var(--celadon);
+}
+
+.information {
+    background-color: var(--cambridge-blue);
+}
+
+.log {
+    background-color: var(--charcoal);
+    color: white;
+    flex-basis: 35%;
+    text-align: left;
+    padding: 10px;
+}
