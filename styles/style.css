@@ -64,3 +64,21 @@ body {
     text-align: left;
     padding: 10px;
 }
+
+.draggable {
+    width: 50px;
+    height: 50px;
+    background-color: var(--asparagus);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    margin: 10px;
+    cursor: grab;
+}
+
+.draggable:active {
+    cursor: grabbing;
+}
