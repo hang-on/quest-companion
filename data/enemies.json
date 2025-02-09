@@ -3,29 +3,53 @@
         {
             "id": 1,
             "name": "Goblin",
-            "health": 30,
-            "attack": 5,
+            "quality": 3,
             "defense": 2,
-            "speed": 3,
-            "abilities": ["Slash", "Dodge"]
+            "toughness": 30,
+            "abilities": [],
+            "melee_attack": {
+                "atk": 5,
+                "ap": 1,
+                "special": ["Quick Strike"]
+            }
         },
         {
             "id": 2,
             "name": "Orc",
-            "health": 50,
-            "attack": 8,
+            "quality": 4,
             "defense": 4,
-            "speed": 2,
-            "abilities": ["Smash", "Roar"]
+            "toughness": 50,
+            "abilities": ["Smash", "Roar"],
+            "melee_attack": {
+                "atk": 8,
+                "ap": 2,
+                "special": []
+            },
+            "ranged_attack": {
+                "atk": 6,
+                "ap": 1,
+                "range": 10,
+                "special": []
+            }
         },
         {
             "id": 3,
             "name": "Dragon",
-            "health": 100,
-            "attack": 15,
+            "quality": 5,
             "defense": 10,
-            "speed": 5,
-            "abilities": ["Fire Breath", "Fly"]
+            "toughness": 100,
+            "abilities": ["Fire Breath", "Fly"],
+            "melee_attack": {
+                "atk": 15,
+                "ap": 3,
+                "special": ["Burn"]
+            },
+            "ranged_attack": {
+                "atk": 12,
+                "ap": 2,
+                "range": 15,
+                "special": ["Flame Burst"]
+            }
         }
     ]
 }
