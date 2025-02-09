@@ -1,6 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Full Screen Web App Loaded');
 
+    fetch('data/enemies.json')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            // You can now use the enemy data in your app
+        })
+        .catch(error => console.error('Error loading enemy data:', error));
+
     const draggables = document.querySelectorAll('.draggable');
 
     draggables.forEach(draggable => {
