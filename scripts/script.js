@@ -1,10 +1,40 @@
+class Unit {
+    constructor(data) {
+        this.id = data.id;
+        this.name = data.name;
+        this.quality = data.quality;
+        this.defense = data.defense;
+        this.toughness = data.toughness;
+        this.unit_size = data.unit_size || 1;
+        this.abilities = data.abilities || [];
+        this.melee_attack = data.melee_attack;
+        this.ranged_attack = data.ranged_attack || null;
+    }
+
+    // Example method to display unit information
+    displayInfo() {
+        console.log(`Name: ${this.name}`);
+        console.log(`Quality: ${this.quality}`);
+        console.log(`Defense: ${this.defense}`);
+        console.log(`Toughness: ${this.toughness}`);
+        console.log(`Unit Size: ${this.unit_size}`);
+        console.log(`Abilities: ${this.abilities.join(', ')}`);
+        console.log(`Melee Attack: ${JSON.stringify(this.melee_attack)}`);
+        if (this.ranged_attack) {
+            console.log(`Ranged Attack: ${JSON.stringify(this.ranged_attack)}`);
+        }
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('Full Screen Web App Loaded');
 
     fetch('data/enemies.json')
         .then(response => response.json())
         .then(data => {
             console.log('Enemies:', data);
-            // You can now use the enemy data in your app
+            const enemies = data.enemies.map(enemyData => new Unit(enemyData));
+            enemies.forEach(enemy => enemy.displayInfo());
         })
         .catch(error => console.error('Error loading enemy data:', error));
 
@@ -12,7 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             console.log('Heroes:', data);
-            // You can now use the hero data in your app
+            const heroes = data.heroes.map(heroData => new Unit(heroData));
+            heroes.forEach(hero => hero.displayInfo());
         })
         .catch(error => console.error('Error loading hero data:', error));
 
