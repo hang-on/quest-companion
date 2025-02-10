@@ -50,7 +50,7 @@ body {
     box-sizing: border-box;
 }
 
-.column {
+#column-heroes, #column-enemies, #column-tokens {
     flex: 1;
     display: flex;
     flex-direction: column;
