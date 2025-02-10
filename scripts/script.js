@@ -9,6 +9,7 @@ class Unit {
         this.abilities = data.abilities || [];
         this.melee_attack = data.melee_attack;
         this.ranged_attack = data.ranged_attack || null;
+        this.wounds = 0; // Additional property not found in the JSON data
     }
 
     // Example method to display unit information
@@ -23,6 +24,7 @@ class Unit {
         if (this.ranged_attack) {
             console.log(`Ranged Attack: ${JSON.stringify(this.ranged_attack)}`);
         }
+        console.log(`Wounds: ${this.wounds}`);
     }
 }
 
@@ -30,19 +32,31 @@ class Hero extends Unit {
     constructor(data) {
         super(data);
         this.unit_size = 1; // Always set unit size to 1 for heroes
+        this.stress = 0;
+        this.bleeding = 0;
         this.endurance = data.endurance;
         this.strength = data.strength;
         this.dexterity = data.dexterity;
         this.willpower = data.willpower;
+        this.impaired = false; // Additional properties for heroes
+        this.diseased = false;
+        this.afflicted = false;
+        this.crippled = false;
     }
 
     // Example method to display hero information
     displayInfo() {
         super.displayInfo();
+        console.log(`Stress: ${this.stress}`);
+        console.log(`Bleeding: ${this.bleeding}`);
         console.log(`Endurance: ${this.endurance}`);
         console.log(`Strength: ${this.strength}`);
         console.log(`Dexterity: ${this.dexterity}`);
         console.log(`Willpower: ${this.willpower}`);
+        console.log(`Impaired: ${this.impaired}`);
+        console.log(`Diseased: ${this.diseased}`);
+        console.log(`Afflicted: ${this.afflicted}`);
+        console.log(`Crippled: ${this.crippled}`);
     }
 }
 
