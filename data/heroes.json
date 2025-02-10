@@ -2,30 +2,20 @@
     "heroes": [
         {
             "id": 1,
-            "name": "Knight",
-            "health": 80,
-            "attack": 10,
-            "defense": 8,
-            "speed": 2,
-            "abilities": ["Shield Block", "Sword Slash"]
-        },
-        {
-            "id": 2,
-            "name": "Archer",
-            "health": 60,
-            "attack": 12,
-            "defense": 4,
-            "speed": 4,
-            "abilities": ["Arrow Shot", "Evasion"]
-        },
-        {
-            "id": 3,
-            "name": "Mage",
-            "health": 50,
-            "attack": 15,
-            "defense": 3,
-            "speed": 3,
-            "abilities": ["Fireball", "Teleport"]
+            "name": "Helen von Drachmarr",
+            "quality": 5,
+            "defense": 5,
+            "endurance": 4,
+            "strength": 4,
+            "dexterity": 6,
+            "willpower": 6,
+            "toughness": 9,
+            "abilities": ["Fighting Might", "Combat Superiority"],
+            "melee_attack": {
+                "atk": 3,
+                "ap": 0,
+                "special": []
+            }
         }
     ]
 }
