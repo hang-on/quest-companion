@@ -2,34 +2,30 @@
     "enemies": [
         {
             "id": 1,
-            "name": "Goblin",
-            "quality": 3,
-            "defense": 2,
-            "toughness": 30,
-            "abilities": [],
+            "name": "Ghost Horde",
+            "quality": 5,
+            "defense": 6,
+            "toughness": 1,
+            "unit_size": 3,
+            "abilities": ["Ethereal", "Undead"],
             "melee_attack": {
-                "atk": 5,
-                "ap": 1,
-                "special": ["Quick Strike"]
+                "atk": 1,
+                "ap": 0,
+                "special": []
             }
         },
         {
             "id": 2,
-            "name": "Orc",
+            "name": "Ghost Reaper",
             "quality": 4,
-            "defense": 4,
-            "toughness": 50,
-            "abilities": ["Smash", "Roar"],
+            "defense": 5,
+            "toughness": 3,
+            "unit_size": 1,
+            "abilities": ["Ethereal", "Undead"],
             "melee_attack": {
-                "atk": 8,
-                "ap": 2,
-                "special": []
-            },
-            "ranged_attack": {
-                "atk": 6,
+                "atk": 3,
                 "ap": 1,
-                "range": 10,
-                "special": []
+                "special": ["Reap"]
             }
         },
         {
@@ -38,6 +34,7 @@
             "quality": 5,
             "defense": 10,
             "toughness": 100,
+            "unit_size": 3,
             "abilities": ["Fire Breath", "Fly"],
             "melee_attack": {
                 "atk": 15,
