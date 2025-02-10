@@ -29,6 +29,7 @@ class Unit {
 class Hero extends Unit {
     constructor(data) {
         super(data);
+        this.unit_size = 1; // Always set unit size to 1 for heroes
         this.endurance = data.endurance;
         this.strength = data.strength;
         this.dexterity = data.dexterity;
