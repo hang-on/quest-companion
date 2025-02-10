@@ -26,14 +26,30 @@ class Unit {
         }
         console.log(`Wounds: ${this.wounds}`);
     }
+
+    // Method to get formatted information
+    getFormattedInfo() {
+        let info = `
+            <p><strong>Name:</strong> ${this.name}</p>
+            <p><strong>Quality:</strong> ${this.quality}</p>
+            <p><strong>Defense:</strong> ${this.defense}</p>
+            <p><strong>Toughness:</strong> ${this.toughness}</p>
+            <p><strong>Unit Size:</strong> ${this.unit_size}</p>
+            <p><strong>Abilities:</strong> ${this.abilities.join(', ')}</p>
+            <p><strong>Melee Attack:</strong> ${JSON.stringify(this.melee_attack)}</p>
+        `;
+        if (this.ranged_attack) {
+            info += `<p><strong>Ranged Attack:</strong> ${JSON.stringify(this.ranged_attack)}</p>`;
+        }
+        info += `<p><strong>Wounds:</strong> ${this.wounds}</p>`;
+        return info;
+    }
 }
 
 class Hero extends Unit {
     constructor(data) {
         super(data);
         this.unit_size = 1; // Always set unit size to 1 for heroes
-        this.stress = 0;
-        this.bleeding = 0;
         this.endurance = data.endurance;
         this.strength = data.strength;
         this.dexterity = data.dexterity;
@@ -42,13 +58,13 @@ class Hero extends Unit {
         this.diseased = false;
         this.afflicted = false;
         this.crippled = false;
+        this.stress = 0;
+        this.bleeding = 0;
     }
 
     // Example method to display hero information
     displayInfo() {
         super.displayInfo();
-        console.log(`Stress: ${this.stress}`);
-        console.log(`Bleeding: ${this.bleeding}`);
         console.log(`Endurance: ${this.endurance}`);
         console.log(`Strength: ${this.strength}`);
         console.log(`Dexterity: ${this.dexterity}`);
@@ -57,6 +73,26 @@ class Hero extends Unit {
         console.log(`Diseased: ${this.diseased}`);
         console.log(`Afflicted: ${this.afflicted}`);
         console.log(`Crippled: ${this.crippled}`);
+        console.log(`Stress: ${this.stress}`);
+        console.log(`Bleeding: ${this.bleeding}`);
+    }
+
+    // Method to get formatted information
+    getFormattedInfo() {
+        let info = super.getFormattedInfo();
+        info += `
+            <p><strong>Endurance:</strong> ${this.endurance}</p>
+            <p><strong>Strength:</strong> ${this.strength}</p>
+            <p><strong>Dexterity:</strong> ${this.dexterity}</p>
+            <p><strong>Willpower:</strong> ${this.willpower}</p>
+            <p><strong>Impaired:</strong> ${this.impaired}</p>
+            <p><strong>Diseased:</strong> ${this.diseased}</p>
+            <p><strong>Afflicted:</strong> ${this.afflicted}</p>
+            <p><strong>Crippled:</strong> ${this.crippled}</p>
+            <p><strong>Stress:</strong> ${this.stress}</p>
+            <p><strong>Bleeding:</strong> ${this.bleeding}</p>
+        `;
+        return info;
     }
 }
 
@@ -71,10 +107,19 @@ class Enemy extends Unit {
         super.displayInfo();
         console.log(`Behavior: ${this.behavior}`);
     }
+
+    // Method to get formatted information
+    getFormattedInfo() {
+        let info = super.getFormattedInfo();
+        info += `<p><strong>Behavior:</strong> ${this.behavior}</p>`;
+        return info;
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Full Screen Web App Loaded');
+
+    const activeHeroes = [];
 
     fetch('data/enemies.json')
         .then(response => response.json())
@@ -90,7 +135,13 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             console.log('Heroes:', data);
             const heroes = data.heroes.map(heroData => new Hero(heroData));
-            heroes.forEach(hero => hero.displayInfo());
+            heroes.forEach(hero => {
+                if (hero.name === "Helen von Drachmarr") {
+                    activeHeroes.push(hero);
+                    document.getElementById('element-hero').dataset.heroId = hero.id;
+                }
+                hero.displayInfo();
+            });
         })
         .catch(error => console.error('Error loading hero data:', error));
 
@@ -99,6 +150,14 @@ document.addEventListener('DOMContentLoaded', () => {
     draggables.forEach(draggable => {
         draggable.addEventListener('dragstart', (e) => {
             e.dataTransfer.setData('text/plain', e.target.id);
+        });
+
+        draggable.addEventListener('click', (e) => {
+            const heroId = e.target.dataset.heroId;
+            const hero = activeHeroes.find(h => h.id == heroId);
+            if (hero) {
+                document.querySelector('.information').innerHTML = hero.getFormattedInfo();
+            }
         });
     });
 
