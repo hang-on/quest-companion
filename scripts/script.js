@@ -26,6 +26,38 @@ class Unit {
     }
 }
 
+class Hero extends Unit {
+    constructor(data) {
+        super(data);
+        this.endurance = data.endurance;
+        this.strength = data.strength;
+        this.dexterity = data.dexterity;
+        this.willpower = data.willpower;
+    }
+
+    // Example method to display hero information
+    displayInfo() {
+        super.displayInfo();
+        console.log(`Endurance: ${this.endurance}`);
+        console.log(`Strength: ${this.strength}`);
+        console.log(`Dexterity: ${this.dexterity}`);
+        console.log(`Willpower: ${this.willpower}`);
+    }
+}
+
+class Enemy extends Unit {
+    constructor(data) {
+        super(data);
+        this.behavior = data.behavior || 'default';
+    }
+
+    // Example method to display enemy information
+    displayInfo() {
+        super.displayInfo();
+        console.log(`Behavior: ${this.behavior}`);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Full Screen Web App Loaded');
 
@@ -33,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             console.log('Enemies:', data);
-            const enemies = data.enemies.map(enemyData => new Unit(enemyData));
+            const enemies = data.enemies.map(enemyData => new Enemy(enemyData));
             enemies.forEach(enemy => enemy.displayInfo());
         })
         .catch(error => console.error('Error loading enemy data:', error));
@@ -42,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             console.log('Heroes:', data);
-            const heroes = data.heroes.map(heroData => new Unit(heroData));
+            const heroes = data.heroes.map(heroData => new Hero(heroData));
             heroes.forEach(hero => hero.displayInfo());
         })
         .catch(error => console.error('Error loading hero data:', error));
