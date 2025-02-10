@@ -120,13 +120,20 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Full Screen Web App Loaded');
 
     const activeHeroes = [];
+    const activeEnemies = [];
 
     fetch('data/enemies.json')
         .then(response => response.json())
         .then(data => {
             console.log('Enemies:', data);
             const enemies = data.enemies.map(enemyData => new Enemy(enemyData));
-            enemies.forEach(enemy => enemy.displayInfo());
+            enemies.forEach(enemy => {
+                if (enemy.name === "Ghost Horde") {
+                    activeEnemies.push(enemy);
+                    document.getElementById('element-enemy').dataset.enemyId = enemy.id;
+                }
+                enemy.displayInfo();
+            });
         })
         .catch(error => console.error('Error loading enemy data:', error));
 
@@ -154,9 +161,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         draggable.addEventListener('click', (e) => {
             const heroId = e.target.dataset.heroId;
-            const hero = activeHeroes.find(h => h.id == heroId);
-            if (hero) {
-                document.querySelector('.information').innerHTML = hero.getFormattedInfo();
+            const enemyId = e.target.dataset.enemyId;
+            if (heroId) {
+                const hero = activeHeroes.find(h => h.id == heroId);
+                if (hero) {
+                    document.querySelector('.information').innerHTML = hero.getFormattedInfo();
+                }
+            } else if (enemyId) {
+                const enemy = activeEnemies.find(e => e.id == enemyId);
+                if (enemy) {
+                    document.querySelector('.information').innerHTML = enemy.getFormattedInfo();
+                }
             }
         });
     });
