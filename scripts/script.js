@@ -130,7 +130,10 @@ document.addEventListener('DOMContentLoaded', () => {
             enemies.forEach(enemy => {
                 if (enemy.name === "Ghost Horde") {
                     activeEnemies.push(enemy);
-                    document.getElementById('element-enemy').dataset.enemyId = enemy.id;
+                    document.getElementById('element-enemy-1').dataset.enemyId = enemy.id;
+                } else if (enemy.name === "Ghost Reaper") {
+                    activeEnemies.push(enemy);
+                    document.getElementById('element-enemy-2').dataset.enemyId = enemy.id;
                 }
                 enemy.displayInfo();
             });
